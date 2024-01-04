@@ -1,3 +1,3 @@
-public class Monkey {
+public class Monkey extends Animal {
     
 }
