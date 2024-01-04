@@ -1,26 +1,25 @@
 /*
  * wildcard overview
  */
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 class Hello{
     public static void main(String[] args) {    
-        List<String> names = new ArrayList<>();
-        names.add("Name 1");
-        names.add("Name 2");
-        printList(names);
+        List<Integer> num = new ArrayList<>();
+        num.add(1);
+        num.add(2);
+        printList(num);
 
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        printList(numbers);
+        List<Double> dbl = new ArrayList<>();
+        dbl.add(1d);
+        dbl.add(2d);        
+        printList(dbl);
     }
 
-    private static void printList(List<?> names) {     //1. if you specify wildcard ?
-        names.forEach(System.out::println);
-        //names.add(new Date());  //2. you only allow use for reading purpose. insertion doesn't allowed.
+    private static void printList(List<? extends Number> nomor) {     //1. if you specify wildcard ?
+        nomor.forEach(System.out::println);
+        Number cobak = nomor.get(0);
+        //nomor.add(5);   //tetep gak bisa add
     }    
 }
