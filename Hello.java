@@ -1,25 +1,20 @@
-import java.util.ArrayList;
-import java.util.List;
 /*
- * generic type is associate with expression on the variable, not the instance it self.
- * try to create inconsistency generic type
+ * generic type construct at compille time.
+ * array type construct at runtime
  */
 class Hello{
-    public static void main(String[] args) {
-        List<String> names = new ArrayList();
-        addToNames(names, "Name 1");
-        addToNames(names, "Name 2");
-        System.out.println(names);
-        incorrectAddToNames(names, 100);    //1. trying to pass argument 'names' with List generic type into parameter with List old type
-        System.out.println(names);
-        String names3 = names.get(2);       //3. trying to get element at index 2 where element type actually are Integer
+    public static void main(String[] args) {    
+        String[] namesArray = new String[5];
+        addToArray(namesArray, "Name 1");
+        incorrectAddToArray(namesArray, 150);   //1. trying to pass argument 'namesArray' with Array of String type into parameter with Array of Object type
+        String anotherName = namesArray[0];
     }
 
-    private static void addToNames(List<String> names, String str) {
-        names.add(str);
+    private static void addToArray(String[] namesArray, String str) {
+        namesArray[0] = str;
     }
 
-    private static void incorrectAddToNames(List list, Integer i) {
-        list.add(i);    //2. element with type integer will happyly insert into List
+    private static void incorrectAddToArray(Object[] namesArray, Integer i) {
+        namesArray[0] = i;  //2. insertion element with type integer will cutoff at runtime because type doesn't match
     }
 }
