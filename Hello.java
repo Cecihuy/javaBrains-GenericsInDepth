@@ -1,20 +1,22 @@
-import java.util.ArrayList;
-import java.util.Date;
-
 /*
- * Adding a generic type of String into ArrayList will give
- * compiler to ensure the type of element we add is type of String.
- * No need to type casting when we get element because compiler know what
- * type of element will be called.
+ * generic only support Object type, if we dealing with
+ * primitive type like int, we can use wrapper class
+ * Integer on it
  */
+import java.util.Arrays;
+import java.util.List;
+
 class Hello{
     public static void main(String[] args) {
-        ArrayList<String> names = new ArrayList<String>();
-        //names.add(new Date());    //cannot add Date type
-        names.add("name 1");
-        names.add("name 2");
+        int i = 10;
+        Integer j = i;      //autoboxing
 
-        String result = names.get(0);
-        System.out.println(result);
+        Integer k = new Integer(15);
+        int l = k;          //unboxing
+
+        List<Integer> list = Arrays.asList(10, 20, 30);
+        int first = list.get(0);
+
+        System.out.println(first);
     }
 }
