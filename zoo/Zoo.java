@@ -1,6 +1,7 @@
 public class Zoo {
     public static void main(String[] args) {        
-        Cage<Monkey> monkeyCage = new Cage<Monkey>(new Monkey(), new Monkey());
-        monkeyCage.getAnimal1();        
+        Monkey monkey1 = new Monkey();
+        Monkey monkey2 = new Monkey();
+        Cage.sizeIsCompatible(monkey1,monkey2);
     }
 }

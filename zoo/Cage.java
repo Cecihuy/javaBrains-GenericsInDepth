@@ -22,7 +22,7 @@ public class Cage<E extends Animal & Eats & Runs  > {
     public void setAnimal2(E animal2) {
         this.animal2 = animal2;
     }
-    public boolean sizeIsCompatible(){
+    public static<E extends Animal> boolean sizeIsCompatible(E animal1, E animal2){
         return animal1.getType().equals(animal2.getType());
     }
     public void feedAnimal(){
