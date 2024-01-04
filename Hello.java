@@ -1,22 +1,25 @@
-/*
- * generic only support Object type, if we dealing with
- * primitive type like int, we can use wrapper class
- * Integer on it
- */
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * generic type is associate with expression on the variable, not the instance it self.
+ * try to create inconsistency generic type
+ */
 class Hello{
     public static void main(String[] args) {
-        int i = 10;
-        Integer j = i;      //autoboxing
+        List<String> names = new ArrayList();
+        addToNames(names, "Name 1");
+        addToNames(names, "Name 2");
+        System.out.println(names);
+        incorrectAddToNames(names, 100);    //1. trying to pass argument 'names' with List generic type into parameter with List old type
+        System.out.println(names);
+        String names3 = names.get(2);       //3. trying to get element at index 2 where element type actually are Integer
+    }
 
-        Integer k = new Integer(15);
-        int l = k;          //unboxing
+    private static void addToNames(List<String> names, String str) {
+        names.add(str);
+    }
 
-        List<Integer> list = Arrays.asList(10, 20, 30);
-        int first = list.get(0);
-
-        System.out.println(first);
+    private static void incorrectAddToNames(List list, Integer i) {
+        list.add(i);    //2. element with type integer will happyly insert into List
     }
 }
