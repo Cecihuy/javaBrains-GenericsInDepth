@@ -1,20 +1,26 @@
 /*
- * generic type construct at compille time.
- * array type construct at runtime
+ * 
  */
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 class Hello{
     public static void main(String[] args) {    
-        String[] namesArray = new String[5];
-        addToArray(namesArray, "Name 1");
-        incorrectAddToArray(namesArray, 150);   //1. trying to pass argument 'namesArray' with Array of String type into parameter with Array of Object type
-        String anotherName = namesArray[0];
+        List<String> names = new ArrayList<>();
+        names.add("Name 1");
+        names.add("Name 2");
+        printList(names);
+
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        printList(numbers);
     }
 
-    private static void addToArray(String[] namesArray, String str) {
-        namesArray[0] = str;
-    }
-
-    private static void incorrectAddToArray(Object[] namesArray, Integer i) {
-        namesArray[0] = i;  //2. insertion element with type integer will cutoff at runtime because type doesn't match
-    }
+    private static void printList(List<Object> names) {     //1. if you specify Object
+        names.forEach(System.out::println);
+        names.add(new Date());  //2. you broke type safety
+    }    
 }
