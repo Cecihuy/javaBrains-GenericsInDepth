@@ -1,5 +1,5 @@
 /*
- * 
+ * wildcard overview
  */
 
 import java.util.ArrayList;
@@ -19,8 +19,8 @@ class Hello{
         printList(numbers);
     }
 
-    private static void printList(List<Object> names) {     //1. if you specify Object
+    private static void printList(List<?> names) {     //1. if you specify wildcard ?
         names.forEach(System.out::println);
-        names.add(new Date());  //2. you broke type safety
+        //names.add(new Date());  //2. you only allow use for reading purpose. insertion doesn't allowed.
     }    
 }
